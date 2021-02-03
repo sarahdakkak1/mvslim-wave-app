@@ -1,0 +1,43 @@
+<h1>Shops</h1>
+<div class="title">
+  <span><h3>List of shops</h3>
+  <a href="/shops/new", style="float: right;", class="btn btn-success">Add shops</a></span>
+</div>
+<% if @shops.any? %>
+<% @shops.each do |shop| %>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>shop Name</th>
+        <th>Description</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h4><%= link_to shop.name, shop_path(shop) %></h4>
+          <p><%# image_tag shop.image.url(:thumb) %></p>
+        </td>
+        <td>
+          <p><%= shop.address %></p>
+          <%= link_to "Edit #{shop.name}", edit_shop_path(shop), class:"btn btn-default" %>
+          <%= link_to "Delete #{shop.name}", shop_path(shop), method: :delete, class:"btn btn-default" %>
+        </td>
+        <td>
+        <% shop.reviews.each do |review| %>
+        <p><%= review.thoughts %></p>
+        <% end %>
+        <h5>Average rating: <%#star_rating(shop.average_rating) %></h5>
+        <%= link_to "Review #{shop.name}", new_shop_review_path(shop), class:"btn btn-default" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+  <%else %>
+  <h1>No shops yet</h1>
+  <% end %>
+
+</div>
+</div>

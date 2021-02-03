@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Results</h1>
+  <br>
+
+    <%= form_tag search_path, method: :get do %>
+      <%= hidden_field :shop,:id, value: params[:shop][:id] %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control w-55",
+        value: ""
+      %>
+    <% end %>
+
+
+ <div class ="container">
+      <% @shops.each do |shop| %>
+          <div class="card-white">
+            <div class="shop-card-item">
+              <p><b>shop: </b><%= shop.name %></p>
+            </div>
+            <div class="shop-card-item">
+              <p><b>Address: </b><%= shop.address %></p>
+            </div>
+            <div class="shop-card-item">
+              <p><b>Stars: </b><%= shop.star %></p>
+            </div>
+           <% end %>

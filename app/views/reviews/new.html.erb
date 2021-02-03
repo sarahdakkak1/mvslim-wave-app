@@ -1,0 +1,8 @@
+<h1>Leave a review for "<%= @shop.name %>"</h1>
+
+<!-- post /shops/:shop_id/reviews -->
+<!-- if simple form detects errors in `@review` it will display them in the form -->
+<%= simple_form_for([@shop, @review]) do |f| %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
