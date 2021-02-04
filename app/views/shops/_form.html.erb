@@ -1,6 +1,9 @@
+  <div class="form-group">
+
 <%= simple_form_for(@shop) do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, class:"col-sm-2 control-label" %>
   <%= f.input :address %>
   <%= f.input :star %>
+  </div>
   <%= f.submit %>
 <% end %>

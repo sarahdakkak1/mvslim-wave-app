@@ -55,4 +55,7 @@ gem 'simple_form'
 gem 'pry-byebug'
 
 gem 'searchkick', '~> 4.0'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
+
+gem 'dotenv-rails', groups: [:development, :test]
