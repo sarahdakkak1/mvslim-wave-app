@@ -1,9 +1,14 @@
   <div class="form-group">
 
-<%= simple_form_for(@shop) do |f| %>
+<%= simple_form_for(@shop, remote: true) do |f| %>
+<div class="Container">
   <%= f.input :name, class:"col-sm-2 control-label" %>
   <%= f.input :address %>
   <%= f.input :star %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
-  <%= f.submit %>
+      <div class="mt-3">
+    <%= f.submit class: 'btn btn-primary' %>
+    </div>
 <% end %>
+</div>

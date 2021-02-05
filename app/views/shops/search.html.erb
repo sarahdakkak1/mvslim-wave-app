@@ -26,5 +26,7 @@
             <div class="shop-card-item">
               <p><b>Stars: </b><%= shop.star %></p>
             </div>
+            <div class="card-category"
+      style="background-image: url('<%= cl_image_path shop.photos[0].key, height: 200, width: 300, crop: :fill %>')">        </td>
             <br>
            <% end %>

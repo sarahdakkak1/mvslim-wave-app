@@ -29,10 +29,12 @@ class ShopsController < ApplicationController
   end
 
   def create
-    shop = Shop.new(shop_params)
-    shop.save
-
-    redirect_to shop_path(shop)
+    @shop = Shop.create(shop_params)
+    if @shop.save
+      redirect_to shop_path(@shop)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -40,23 +42,23 @@ class ShopsController < ApplicationController
   end
 
   def update
-    shop = Shop.find(params[:id])
-    shop.update(shop_params)
+    @shop = Shop.find(params[:id])
+    @shop.update(shop_params)
 
     redirect_to shop_path(shop)
   end
 
   def destroy
-    shop = Shop.find(params[:id])
-    shop.destroy
-
+    @shop = Shop.find(params[:id])
+    @shop.destroy
+    flash[:notice] = 'Shops deleted successfully'
     redirect_to shops_path
   end
 
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :address, :stars)
+    params.require(:shop).permit(:name, :address, :stars,photos: [])
   end
 
 end

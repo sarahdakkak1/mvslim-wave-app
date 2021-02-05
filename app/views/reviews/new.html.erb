@@ -1,29 +1,11 @@
 <h1>Leave a review for "<%= @shop.name %>"</h1>
-
+<div class="container">
 <!-- post /shops/:shop_id/reviews -->
 <!-- if simple form detects errors in `@review` it will display them in the form -->
 <%= simple_form_for([@shop, @review]) do |f| %>
   <%= f.input :content %>
+    <%= f.input :photo, as: :file %>
+
   <%= f.submit %>
 <% end %>
-
-<%= form_for [@restaurant, @review], html: {multipart: true, style:"padding:30px;"}, class:"form-horizontal" do |f| %>
-  <div class="form-group">
-    <%= f.label :thoughts, class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
-      <%= f.text_area :thoughts,  class:"form-control", placeholder:"Enter your thoughts..."%><br>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :rating, class:"col-sm-2 control-label"%>
-    <div class="col-sm-10">
-      <%= f.select :rating, (1..5) %><br><br>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Leave Review", class: "btn btn-success"%>
-    </div>
-  </div>
-<% end %>
+</div>

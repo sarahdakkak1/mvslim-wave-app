@@ -1,10 +1,11 @@
 <h1>Shops</h1>
 <div class="title">
-  <span><h3>List of shops</h3>
   <a href="/shops/new", style="float: right;", class="btn btn-success">Add shops</a></span>
 </div>
 <% if @shops.any? %>
 <% @shops.each do |shop| %>
+<div class="container">
+
 <table class="table table-hover">
     <thead>
       <tr>
@@ -17,8 +18,8 @@
       <tr>
         <td>
           <h4><%= link_to shop.name, shop_path(shop) %></h4>
-          <p><%# image_tag shop.image.url(:thumb) %></p>
-        </td>
+<div class="card-category"
+      style="background-image: url('<%= cl_image_path shop.photos[0].key, height: 200, width: 300, crop: :fill %>')">        </td>
         <td>
           <p><%= shop.address %></p>
           <%= link_to "Edit #{shop.name}", edit_shop_path(shop), class:"btn btn-default" %>
@@ -26,7 +27,7 @@
         </td>
         <td>
         <% shop.reviews.each do |review| %>
-        <p><%= review.thoughts %></p>
+        <p><%= review.content %></p>
         <% end %>
         <h5>Average rating: <%#star_rating(shop.average_rating) %></h5>
         <%= link_to "Review #{shop.name}", new_shop_review_path(shop), class:"btn btn-default" %>
@@ -38,6 +39,6 @@
   <%else %>
   <h1>No shops yet</h1>
   <% end %>
-
+</div>
 </div>
 </div>
