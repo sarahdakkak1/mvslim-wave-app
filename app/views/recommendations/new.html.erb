@@ -1,0 +1,12 @@
+<h1>Leave a review for "<%= @restaurant.name %>"</h1>
+  <div class="container">
+  <!-- post /shops/:shop_id/reviews -->
+  <!-- if simple form detects errors in `@review` it will display them in the form -->
+    <%= simple_form_for([@restaurant, @recommendation]) do |f| %>
+        <%= f.input :content %>
+        <%= f.input :stars %>
+        <%= f.input :photo, as: :file %>
+
+      <%= f.submit %>
+    <% end %>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stars: MyString
+  integer: MyString
+  content: MyText
+  restaurant: one
+
+two:
+  stars: MyString
+  integer: MyString
+  content: MyText
+  restaurant: two

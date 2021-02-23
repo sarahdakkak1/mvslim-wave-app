@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/shops/search', to: 'shops#search', as: :search
 
   root to: 'page#index'
-    resources :restaurants
+    resources :restaurants do
+        resources :recommendations, only: [:new, :create]
+    end
     resources :shops do
     resources :reviews, only: [:new, :create]
   end
