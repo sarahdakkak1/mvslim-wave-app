@@ -1,10 +1,10 @@
-import React, {component} from 'react'
+import React, {Component} from 'react'
 
 class App extends Component {
   render() {
-    return(
-        <div>Hello world, this is your app speaking</div>
-      )
+    return (
+      <div>hey</div>
+    )
   }
 }
 
