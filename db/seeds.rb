@@ -2,7 +2,9 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
-#
+require 'rest-client'
+require 'open-uri'
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning database..."
@@ -17,3 +19,15 @@ pizza_east = { name: "Pizza East", address: "56A Shoreditch High St, London E1 6
   puts "Created #{shop.name}"
 end
 puts "Finished!"
+
+
+
+rm = RestClient.post"https://api.yelp.com/v3/businesses/search?term=#{halal}&location=#{montreal}"
+rm_array = JSON.parse(rm)[“results”]
+ rm_array.each do |restaurant|
+  i = Restaurant.create(name: restaurant["name"], address: restaurant["location.display_address"])
+end
+puts "create #{i.name}"
+
+
+
