@@ -10,3 +10,9 @@ development:
 test:
   <<: *default
   database: mvslim-wave-app_test
+
+production:
+  <<: *default
+  database: mvslim-wave-app_production
+  username: mvslim-wave-app
+  password: <%= ENV['MVSLIM-WAVE-APP_DATABASE_PASSWORD'] %>
