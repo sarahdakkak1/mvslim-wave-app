@@ -22,12 +22,5 @@ puts "Finished!"
 
 
 
-rm = RestClient.post"https://api.yelp.com/v3/businesses/search?term=#{halal}&location=#{montreal}"
-rm_array = JSON.parse(rm)[“results”]
- rm_array.each do |restaurant|
-  i = Restaurant.create(name: restaurant["name"], address: restaurant["location.display_address"])
-end
-puts "create #{i.name}"
-
 
 
