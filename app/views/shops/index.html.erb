@@ -18,7 +18,7 @@
                           <td>
                         <h4><%= link_to shop.name, shop_path(shop) %></h4>
                         <div class="card-category"
-                        style="background-image: url('<%= cl_image_path shop.photos, height: 200, width: 300, crop: :fill %>')">        </td>
+                        style="background-image: url('<%= cl_image_path shop.photos[0].key, height: 200, width: 300, crop: :fill %>')">        </td>
                           <td>
                             <p><%= shop.address %></p>
                             <%= link_to "Edit #{shop.name}", edit_shop_path(shop), class:"btn btn-default" %>
