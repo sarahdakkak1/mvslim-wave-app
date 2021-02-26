@@ -56,6 +56,7 @@ gem 'simple_form'
 gem 'pry-byebug'
 
 gem 'searchkick', '~> 4.0'
+gem 'geocoder'
 
 
 gem 'dotenv-rails', groups: [:development, :test]
