@@ -1,16 +1,12 @@
-  <div class="form-group">
-
 <%= simple_form_for(@restaurant, remote: true) do |f| %>
-<div class="Container">
   <%= f.input :name, class:"col-sm-2 control-label" %>
   <%= f.input :address %>
   <%= f.input :description %>
   <%# f.input :opening %>
-
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  </div>
-      <div class="mt-3">
+    <div class="mt-3">
     <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', restaurants_path, class: 'btn btn-danger ml-2' %>
+
     </div>
 <% end %>
-</div>

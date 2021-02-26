@@ -1,4 +1,6 @@
-<h1><%= @restaurant.name %></h1>
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+</div>
    <div class="row">
         <% if @restaurant.photos.nil? %>
    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path "https://res.cloudinary.com/dwxhfawho/image/upload/v1605666098/air-moto/2018_Aprilia_Shiver_900/2018_Aprilia_Shiver_900_1_aiz6s2.jpg", height: 300, width: 400, crop: :fill %>')">
@@ -6,21 +8,40 @@
     <img class="d-block w-100"  src= "<%= cl_image_path @restaurant.photos[0].key, crop: :fill %>", height: "300", width:"550">
     <br>
         <% end %>
-<br>
+</div>
+
+
+
+
+<div class="col-md-6 offset-md-3 mt-5" style="margin:0 auto">
+  <div class="card-header">
+    The Restaurant
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" id="name"><%= @restaurant.address %>
+    <%= @restaurant.description %> <%= @restaurant.opening %>
+    <br>
+   <id="stars"> 4.93&#9733;       (32 bookings)</id></li>
+    <li class="list-group-item"><strong>Location:</strong> <%= @restaurant.address %></li>
+    <li class="list-group-item"><strong>Description:</strong> <%= @restaurant.description%></li>
+    <li class="list-group-item"><strong>Opening Hours:</strong> <%# @restaurant.price%></li>
+  </ul>
+</div>
+</div>
+
+
 <div class="col-sm-12 col-md-6">
-  <p><strong>Address:</strong> <%= @restaurant.address %></p>
-  <p><strong>Description:</strong> <%= @restaurant.description %></p>
-  <p><strong>Opening Hours:</strong> <%= @restaurant.opening %></p>
-  <p><%= link_to "Edit", edit_restaurant_path(@restaurant) %></p>
+  <div class="col-md-6 offset-md-3 mt-5" style="margin:0 auto">
+      <div class="card-header">
+      <h3><%= link_to "Leave a review", new_restaurant_recommendation_path(@restaurant) %></h3>
+  </div>
+   <% @restaurant.recommendations.each do |recommendation| %>
+     <ul class="list-group list-group-flush">
+           <li class="list-group-item"><strong>Review:  </strong><%= recommendation.content %>
+           <strong>Stars:  </strong><%= recommendation.stars %></id></li>
+      </ul>
+    <% end %>
+      <p><%= link_to "Edit", edit_restaurant_path(@restaurant) %></p>
   <p><%= link_to "Delete", restaurant_path(@restaurant), method: :delete %></p>
-
-  <p><%# link_to "Leave a review", new_restaurant_review_path(@restaurant) %></p>
-        <h3>Add a new review</h3>
-
-   <%# @restaurant.reviews.each do |review| %>
-             <%# review.content %>
-            <%# review.photos[0] %>
-        <%# end %>
-
 </div>
 </div>
