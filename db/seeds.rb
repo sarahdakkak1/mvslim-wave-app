@@ -8,6 +8,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Shop.destroy_all
 
+Restaurant.destroy_all
+
+
 puts "destroy all shops"
 
 

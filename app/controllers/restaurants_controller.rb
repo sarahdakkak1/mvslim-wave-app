@@ -1,14 +1,18 @@
 class RestaurantsController < ApplicationController
-    def index
-      @restaurants = Restaurant.all
-          # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
-      @markers = @restaurants.geocoded.map do |restaurant|
+
+  def index
+    # search condition
+    # the `geocoded` scope filters only restaurants with coordinates (latitude & longitude)
+    @restaurants = Restaurant.all
+
+    @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
-        lng: restaurant.longitude
+        lng: restaurant.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
       }
     end
-    end
+  end
 
   def search
     # write a search for boxes and store in instance variable
@@ -42,7 +46,15 @@ class RestaurantsController < ApplicationController
 
   private
 
+
+  def build_geojson
+    {
+      type: "FeatureCollection",
+      features: @restaurants.map(&:to_feature)
+    }
+  end
+
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :description, :opening, photos: [])
+    params.require(:restaurant).permit(:name, :address, :description,:latitude, :longitude, :opening, photos: [])
   end
 end
