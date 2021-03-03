@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 
   def search
     # write a search for boxes and store in instance variable
-    @restaurant = Restaurant.search(params[:query], where: {restauranr_id: params[:restauranr][:id]})
+    @restaurant = Restaurant.search(params[:query], where: {restaurant_id: params[:restauranr][:id]})
     # write a search for items and store in instance variable
   end
 

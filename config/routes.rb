@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'page/index'
-  get '/shops/search', to: 'shops#search', as: :search
+  get '/businesses/search', to: 'businesses#search', as: :search
 
   root to: 'page#index'
     resources :restaurants do
